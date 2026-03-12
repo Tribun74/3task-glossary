@@ -1,0 +1,427 @@
+# Copyright (C) 2024 3task.de
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: A-Z Glossary 2.0.0\n"
+"Report-Msgid-Bugs-To: https://3task.de/\n"
+"POT-Creation-Date: 2024-12-30 12:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: a-z-glossary.php
+msgid "A-Z Glossary"
+msgstr ""
+
+#: includes/class-admin.php
+msgid "A-Z Glossary"
+msgstr ""
+
+#: includes/class-admin.php
+msgid "Settings"
+msgstr ""
+
+#. Tab Labels
+msgid "Glossaries"
+msgstr ""
+
+msgid "Design"
+msgstr ""
+
+msgid "Support"
+msgstr ""
+
+msgid "Pro"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+#. Glossaries Tab
+msgid "Your Glossaries"
+msgstr ""
+
+msgid "Add your first glossary to get started."
+msgstr ""
+
+msgid "Add Glossary"
+msgstr ""
+
+msgid "Select a page..."
+msgstr ""
+
+msgid "Select a WordPress page to use as a glossary. Child pages will become entries."
+msgstr ""
+
+msgid "Page"
+msgstr ""
+
+msgid "Entries"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Active"
+msgstr ""
+
+msgid "Inactive"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Are you sure you want to remove this glossary?"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Glossary added successfully."
+msgstr ""
+
+msgid "Glossary removed."
+msgstr ""
+
+msgid "Settings saved."
+msgstr ""
+
+msgid "Please select a page."
+msgstr ""
+
+msgid "This page is already a glossary."
+msgstr ""
+
+msgid "Maximum number of glossaries reached."
+msgstr ""
+
+msgid "Maximum entries reached"
+msgstr ""
+
+#. Limits
+msgid "Glossary Limit"
+msgstr ""
+
+msgid "Entry Limit"
+msgstr ""
+
+msgid "of"
+msgstr ""
+
+msgid "used"
+msgstr ""
+
+msgid "Unlimited"
+msgstr ""
+
+#. Supporter Mode
+msgid "Supporter Mode"
+msgstr ""
+
+msgid "Enable Supporter Mode"
+msgstr ""
+
+msgid "Show a small credit link on glossary pages to unlock extra limits."
+msgstr ""
+
+msgid "Current Limits"
+msgstr ""
+
+msgid "Lite"
+msgstr ""
+
+msgid "Supporter"
+msgstr ""
+
+msgid "Pro"
+msgstr ""
+
+msgid "glossary"
+msgstr ""
+
+msgid "glossaries"
+msgstr ""
+
+msgid "entries"
+msgstr ""
+
+msgid "unlimited"
+msgstr ""
+
+#. Design Tab
+msgid "Color Scheme"
+msgstr ""
+
+msgid "Choose the color theme for your glossary."
+msgstr ""
+
+msgid "Emerald"
+msgstr ""
+
+msgid "Ocean"
+msgstr ""
+
+msgid "Sunset"
+msgstr ""
+
+msgid "Berry"
+msgstr ""
+
+msgid "Slate"
+msgstr ""
+
+msgid "Auto (Theme)"
+msgstr ""
+
+msgid "Navigation Style"
+msgstr ""
+
+msgid "Choose how the A-Z navigation looks."
+msgstr ""
+
+msgid "Buttons"
+msgstr ""
+
+msgid "Pills"
+msgstr ""
+
+msgid "Minimal"
+msgstr ""
+
+msgid "Dark Mode"
+msgstr ""
+
+msgid "Control how dark mode is handled."
+msgstr ""
+
+msgid "Auto (System)"
+msgstr ""
+
+msgid "Light"
+msgstr ""
+
+msgid "Dark"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+#. Auto-Linking
+msgid "Auto-Linking"
+msgstr ""
+
+msgid "Enable Auto-Linking"
+msgstr ""
+
+msgid "Automatically link glossary terms within your content."
+msgstr ""
+
+msgid "Link Mode"
+msgstr ""
+
+msgid "Selective"
+msgstr ""
+
+msgid "Only on glossary pages"
+msgstr ""
+
+msgid "Global"
+msgstr ""
+
+msgid "On all pages and posts"
+msgstr ""
+
+msgid "Link Style"
+msgstr ""
+
+msgid "Highlight"
+msgstr ""
+
+msgid "Background highlight"
+msgstr ""
+
+msgid "Underline"
+msgstr ""
+
+msgid "Dashed underline"
+msgstr ""
+
+msgid "Plain"
+msgstr ""
+
+msgid "No styling"
+msgstr ""
+
+#. Support Tab
+msgid "Get Support"
+msgstr ""
+
+msgid "Need help with A-Z Glossary Lite?"
+msgstr ""
+
+msgid "Documentation"
+msgstr ""
+
+msgid "Read our getting started guide and FAQ."
+msgstr ""
+
+msgid "View Documentation"
+msgstr ""
+
+msgid "Community Support"
+msgstr ""
+
+msgid "Ask questions and get help from the community."
+msgstr ""
+
+msgid "Visit Forums"
+msgstr ""
+
+msgid "Priority Support"
+msgstr ""
+
+msgid "Get fast, personal support with the Pro version."
+msgstr ""
+
+msgid "Learn More"
+msgstr ""
+
+#. Pro Tab
+msgid "Upgrade to Pro"
+msgstr ""
+
+msgid "Unlock the full potential of A-Z Glossary"
+msgstr ""
+
+msgid "Unlimited glossaries"
+msgstr ""
+
+msgid "Unlimited entries per glossary"
+msgstr ""
+
+msgid "Advanced auto-linking options"
+msgstr ""
+
+msgid "Tooltips on hover"
+msgstr ""
+
+msgid "Import/Export functionality"
+msgstr ""
+
+msgid "Priority email support"
+msgstr ""
+
+msgid "Regular updates"
+msgstr ""
+
+msgid "Get Pro Now"
+msgstr ""
+
+msgid "Current: Lite Version"
+msgstr ""
+
+msgid "Current: Supporter Mode"
+msgstr ""
+
+#. Help Tab
+msgid "Quick Start Guide"
+msgstr ""
+
+msgid "Step 1: Create a Parent Page"
+msgstr ""
+
+msgid "Create a new WordPress page that will serve as your glossary index (e.g., \"Glossary\" or \"Dictionary\")."
+msgstr ""
+
+msgid "Step 2: Create Entry Pages"
+msgstr ""
+
+msgid "Create child pages under your glossary page. Each child page becomes a glossary entry."
+msgstr ""
+
+msgid "Step 3: Activate Glossary"
+msgstr ""
+
+msgid "Go to the Glossaries tab and add your parent page as a glossary."
+msgstr ""
+
+msgid "Step 4: Visit Your Glossary"
+msgstr ""
+
+msgid "Visit your glossary page to see the A-Z navigation and entry list."
+msgstr ""
+
+msgid "Tips"
+msgstr ""
+
+msgid "Page titles become entry names"
+msgstr ""
+
+msgid "First letter determines A-Z sorting"
+msgstr ""
+
+msgid "German umlauts are sorted correctly"
+msgstr ""
+
+msgid "Sub-navigation appears on entry pages"
+msgstr ""
+
+msgid "Frequently Asked Questions"
+msgstr ""
+
+msgid "How do I add more entries?"
+msgstr ""
+
+msgid "Simply create more child pages under your glossary page. They appear automatically."
+msgstr ""
+
+msgid "Can I change the order of entries?"
+msgstr ""
+
+msgid "Entries are sorted alphabetically by title. To change position, rename the page."
+msgstr ""
+
+msgid "How does auto-linking work?"
+msgstr ""
+
+msgid "When enabled, glossary terms in your content automatically link to their entries."
+msgstr ""
+
+#. Frontend
+msgid "Back to Glossary"
+msgstr ""
+
+msgid "No entries yet"
+msgstr ""
+
+msgid "Start adding child pages to populate your glossary."
+msgstr ""
+
+msgid "Showing %1$d of %2$d entries."
+msgstr ""
+
+msgid "Upgrade for more"
+msgstr ""
+
+msgid "Powered by"
+msgstr ""
+
+#. Validation
+msgid "Invalid nonce."
+msgstr ""
+
+msgid "You do not have permission to do this."
+msgstr ""
+
+#. Notices
+msgid "Dismiss this notice."
+msgstr ""

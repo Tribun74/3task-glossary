@@ -1,0 +1,292 @@
+# German translation for A-Z Glossary
+# Copyright (C) 2024 3task.de
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: A-Z Glossary 2.0.0\n"
+"Report-Msgid-Bugs-To: https://3task.de/\n"
+"POT-Creation-Date: 2024-12-30 12:00+0000\n"
+"PO-Revision-Date: 2024-12-30 12:00+0000\n"
+"Last-Translator: 3task.de <info@3task.de>\n"
+"Language-Team: German <info@3task.de>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "A-Z Glossary"
+msgstr "A-Z Glossar"
+
+msgid "A-Z Glossary"
+msgstr "A-Z Glossar"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Glossaries"
+msgstr "Glossare"
+
+msgid "Design"
+msgstr "Design"
+
+msgid "Support"
+msgstr "Support"
+
+msgid "Pro"
+msgstr "Pro"
+
+msgid "Help"
+msgstr "Hilfe"
+
+msgid "Your Glossaries"
+msgstr "Deine Glossare"
+
+msgid "Add your first glossary to get started."
+msgstr "Erstelle dein erstes Glossar."
+
+msgid "Add Glossary"
+msgstr "Glossar hinzufuegen"
+
+msgid "Select a page..."
+msgstr "Seite auswaehlen..."
+
+msgid "Page"
+msgstr "Seite"
+
+msgid "Entries"
+msgstr "Eintraege"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Actions"
+msgstr "Aktionen"
+
+msgid "Active"
+msgstr "Aktiv"
+
+msgid "Inactive"
+msgstr "Inaktiv"
+
+msgid "Remove"
+msgstr "Entfernen"
+
+msgid "View"
+msgstr "Ansehen"
+
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgid "Glossary added successfully."
+msgstr "Glossar erfolgreich hinzugefuegt."
+
+msgid "Glossary removed."
+msgstr "Glossar entfernt."
+
+msgid "Settings saved."
+msgstr "Einstellungen gespeichert."
+
+msgid "Glossary Limit"
+msgstr "Glossar-Limit"
+
+msgid "Entry Limit"
+msgstr "Eintrags-Limit"
+
+msgid "of"
+msgstr "von"
+
+msgid "used"
+msgstr "verwendet"
+
+msgid "Unlimited"
+msgstr "Unbegrenzt"
+
+msgid "Supporter Mode"
+msgstr "Supporter-Modus"
+
+msgid "Enable Supporter Mode"
+msgstr "Supporter-Modus aktivieren"
+
+msgid "Current Limits"
+msgstr "Aktuelle Limits"
+
+msgid "Lite"
+msgstr "Lite"
+
+msgid "Supporter"
+msgstr "Supporter"
+
+msgid "glossary"
+msgstr "Glossar"
+
+msgid "glossaries"
+msgstr "Glossare"
+
+msgid "entries"
+msgstr "Eintraege"
+
+msgid "unlimited"
+msgstr "unbegrenzt"
+
+msgid "Color Scheme"
+msgstr "Farbschema"
+
+msgid "Emerald"
+msgstr "Smaragd"
+
+msgid "Ocean"
+msgstr "Ozean"
+
+msgid "Sunset"
+msgstr "Sonnenuntergang"
+
+msgid "Berry"
+msgstr "Beere"
+
+msgid "Slate"
+msgstr "Schiefer"
+
+msgid "Auto (Theme)"
+msgstr "Automatisch (Theme)"
+
+msgid "Navigation Style"
+msgstr "Navigations-Stil"
+
+msgid "Buttons"
+msgstr "Buttons"
+
+msgid "Pills"
+msgstr "Pills"
+
+msgid "Minimal"
+msgstr "Minimal"
+
+msgid "Dark Mode"
+msgstr "Dunkelmodus"
+
+msgid "Auto (System)"
+msgstr "Automatisch (System)"
+
+msgid "Light"
+msgstr "Hell"
+
+msgid "Dark"
+msgstr "Dunkel"
+
+msgid "Preview"
+msgstr "Vorschau"
+
+msgid "Auto-Linking"
+msgstr "Auto-Verlinkung"
+
+msgid "Enable Auto-Linking"
+msgstr "Auto-Verlinkung aktivieren"
+
+msgid "Link Mode"
+msgstr "Link-Modus"
+
+msgid "Selective"
+msgstr "Selektiv"
+
+msgid "Global"
+msgstr "Global"
+
+msgid "Link Style"
+msgstr "Link-Stil"
+
+msgid "Highlight"
+msgstr "Hervorhebung"
+
+msgid "Underline"
+msgstr "Unterstrichen"
+
+msgid "Plain"
+msgstr "Schlicht"
+
+msgid "Get Support"
+msgstr "Support erhalten"
+
+msgid "Documentation"
+msgstr "Dokumentation"
+
+msgid "View Documentation"
+msgstr "Dokumentation ansehen"
+
+msgid "Community Support"
+msgstr "Community-Support"
+
+msgid "Visit Forums"
+msgstr "Foren besuchen"
+
+msgid "Priority Support"
+msgstr "Prioritaets-Support"
+
+msgid "Learn More"
+msgstr "Mehr erfahren"
+
+msgid "Upgrade to Pro"
+msgstr "Auf Pro upgraden"
+
+msgid "Unlimited glossaries"
+msgstr "Unbegrenzte Glossare"
+
+msgid "Unlimited entries per glossary"
+msgstr "Unbegrenzte Eintraege pro Glossar"
+
+msgid "Advanced auto-linking options"
+msgstr "Erweiterte Auto-Verlinkungsoptionen"
+
+msgid "Tooltips on hover"
+msgstr "Tooltips beim Hover"
+
+msgid "Import/Export functionality"
+msgstr "Import/Export Funktionalitaet"
+
+msgid "Priority email support"
+msgstr "Prioritaets-E-Mail-Support"
+
+msgid "Regular updates"
+msgstr "Regelmaessige Updates"
+
+msgid "Get Pro Now"
+msgstr "Jetzt Pro holen"
+
+msgid "Current: Lite Version"
+msgstr "Aktuell: Lite-Version"
+
+msgid "Current: Supporter Mode"
+msgstr "Aktuell: Supporter-Modus"
+
+msgid "Quick Start Guide"
+msgstr "Schnellstart-Anleitung"
+
+msgid "Step 1: Create a Parent Page"
+msgstr "Schritt 1: Elternseite erstellen"
+
+msgid "Step 2: Create Entry Pages"
+msgstr "Schritt 2: Eintragsseiten erstellen"
+
+msgid "Step 3: Activate Glossary"
+msgstr "Schritt 3: Glossar aktivieren"
+
+msgid "Step 4: Visit Your Glossary"
+msgstr "Schritt 4: Glossar besuchen"
+
+msgid "Tips"
+msgstr "Tipps"
+
+msgid "Frequently Asked Questions"
+msgstr "Haeufig gestellte Fragen"
+
+msgid "Back to Glossary"
+msgstr "Zurueck zum Glossar"
+
+msgid "No entries yet"
+msgstr "Noch keine Eintraege"
+
+msgid "Upgrade for more"
+msgstr "Upgrade fuer mehr"
+
+msgid "Powered by"
+msgstr "Powered by"

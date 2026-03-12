@@ -1,0 +1,753 @@
+/**
+ * 3task Glossary - Frontend Styles v2.3.0
+ * 6 Color Schemes + Dark Mode + 3 Navigation Styles + Widget + Print
+ *
+ * @package 3Task_Glossary
+ * @since 2.0.0
+ */
+
+/* ==========================================================================
+   CSS VARIABLES (Default: Emerald)
+   ========================================================================== */
+
+:root {
+    /* Primary Colors (set via PHP inline CSS) */
+    --azgl-primary: #10b981;
+    --azgl-hover: #059669;
+    --azgl-light: #d1fae5;
+    --azgl-dark-text: #065f46;
+
+    /* Light Mode (default) */
+    --azgl-bg: #ffffff;
+    --azgl-bg-inactive: #f3f4f6;
+    --azgl-text: #1f2937;
+    --azgl-text-muted: #6b7280;
+    --azgl-border: #e5e7eb;
+}
+
+/* ==========================================================================
+   A-Z NAVIGATION - BASE STYLES
+   ========================================================================== */
+
+.azgl-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: var(--azgl-bg);
+    border-radius: 12px;
+    border: 1px solid var(--azgl-border);
+}
+
+.azgl-nav-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+/* Inactive Letters */
+.azgl-nav-inactive {
+    cursor: default;
+    opacity: 0.4;
+}
+
+/* ==========================================================================
+   NAVIGATION STYLE: BUTTONS (default)
+   ========================================================================== */
+
+.azgl-nav-buttons .azgl-nav-letter {
+    background: var(--azgl-primary);
+    color: #ffffff;
+    border-radius: 6px;
+}
+
+.azgl-nav-buttons .azgl-nav-letter:hover {
+    background: var(--azgl-hover);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.azgl-nav-buttons .azgl-nav-inactive {
+    background: var(--azgl-bg-inactive);
+    color: var(--azgl-text-muted);
+}
+
+.azgl-nav-buttons .azgl-nav-inactive:hover {
+    transform: none;
+}
+
+/* ==========================================================================
+   NAVIGATION STYLE: PILLS
+   ========================================================================== */
+
+.azgl-nav-pills .azgl-nav-letter {
+    background: var(--azgl-light);
+    color: var(--azgl-dark-text);
+    border-radius: 20px;
+    padding: 0 14px;
+}
+
+.azgl-nav-pills .azgl-nav-letter:hover {
+    background: var(--azgl-primary);
+    color: #ffffff;
+}
+
+.azgl-nav-pills .azgl-nav-inactive {
+    background: var(--azgl-bg-inactive);
+    color: var(--azgl-text-muted);
+}
+
+/* ==========================================================================
+   NAVIGATION STYLE: MINIMAL
+   ========================================================================== */
+
+.azgl-nav-minimal {
+    background: transparent;
+    border: none;
+    padding: 0;
+    gap: 2px;
+}
+
+.azgl-nav-minimal .azgl-nav-letter {
+    color: var(--azgl-primary);
+    background: transparent;
+    min-width: 28px;
+    height: 32px;
+}
+
+.azgl-nav-minimal .azgl-nav-letter:hover {
+    color: var(--azgl-hover);
+    text-decoration: underline;
+}
+
+.azgl-nav-minimal .azgl-nav-inactive {
+    color: var(--azgl-text-muted);
+}
+
+/* ==========================================================================
+   SUB-NAVIGATION (Entry Pages)
+   ========================================================================== */
+
+.azgl-nav-sub {
+    justify-content: flex-start;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+}
+
+.azgl-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 14px;
+    color: var(--azgl-dark-text);
+    background: var(--azgl-light);
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.azgl-back-link:hover {
+    background: var(--azgl-primary);
+    color: #ffffff;
+}
+
+.azgl-back-link .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+.azgl-nav-separator {
+    color: var(--azgl-border);
+    margin: 0 8px;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   ENTRIES SECTION
+   ========================================================================== */
+
+.azgl-entries {
+    margin-bottom: 40px;
+}
+
+.azgl-section {
+    margin-bottom: 32px;
+    scroll-margin-top: 80px;
+}
+
+.azgl-letter {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--azgl-primary) !important;
+    margin: 0 0 16px 0 !important;
+    padding: 0 0 10px 0 !important;
+    border-bottom: 3px solid var(--azgl-light);
+    background: transparent !important;
+}
+
+.azgl-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+}
+
+.azgl-item {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.azgl-item::before,
+.azgl-item::marker {
+    display: none !important;
+    content: none !important;
+}
+
+.azgl-item a,
+.azgl-item a:link,
+.azgl-item a:visited {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    color: var(--azgl-text) !important;
+    text-decoration: none !important;
+    background: var(--azgl-bg) !important;
+    border: 2px solid var(--azgl-border) !important;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.azgl-item a:hover,
+.azgl-item a:focus {
+    color: var(--azgl-dark-text) !important;
+    background: var(--azgl-light) !important;
+    border-color: var(--azgl-primary) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.azgl-item a:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   EMPTY STATE
+   ========================================================================== */
+
+.azgl-empty-glossary {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--azgl-bg-inactive);
+    border-radius: 12px;
+    color: var(--azgl-text-muted);
+}
+
+.azgl-empty-glossary p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   LIMIT NOTICE
+   ========================================================================== */
+
+.azgl-limit-notice {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border: 1px solid #f59e0b;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 24px;
+    text-align: center;
+}
+
+.azgl-limit-notice p {
+    margin: 0 0 12px 0;
+    color: #92400e;
+    font-size: 0.95rem;
+}
+
+.azgl-upgrade-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #059669, #047857);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.azgl-upgrade-link:hover {
+    background: linear-gradient(135deg, #047857, #065f46);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   CREDIT LINK (Supporter Mode)
+   ========================================================================== */
+
+.azgl-credit {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--azgl-border);
+}
+
+.azgl-credit small {
+    color: var(--azgl-text-muted);
+    font-size: 0.8rem;
+}
+
+.azgl-credit a {
+    color: var(--azgl-primary);
+    text-decoration: none;
+}
+
+.azgl-credit a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   AUTO-LINKED GLOSSARY TERMS
+   ========================================================================== */
+
+a.glossary-term {
+    color: var(--azgl-dark-text);
+    background: var(--azgl-light);
+    padding: 1px 4px;
+    border-radius: 3px;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--azgl-primary);
+    transition: all 0.2s;
+}
+
+a.glossary-term:hover {
+    background: var(--azgl-primary);
+    color: #ffffff;
+    border-bottom-color: transparent;
+}
+
+/* ==========================================================================
+   DARK MODE OVERRIDES (Applied via JS/CSS based on setting)
+   ========================================================================== */
+
+/* These are set via PHP inline styles for dark mode */
+
+/* ==========================================================================
+   COLOR SCHEME VARIATIONS (for reference - set via PHP)
+   ========================================================================== */
+
+/*
+   Emerald (default):
+   --azgl-primary: #10b981
+   --azgl-hover: #059669
+   --azgl-light: #d1fae5
+   --azgl-dark-text: #065f46
+
+   Ocean:
+   --azgl-primary: #3b82f6
+   --azgl-hover: #2563eb
+   --azgl-light: #dbeafe
+   --azgl-dark-text: #1e40af
+
+   Sunset:
+   --azgl-primary: #f59e0b
+   --azgl-hover: #d97706
+   --azgl-light: #fef3c7
+   --azgl-dark-text: #92400e
+
+   Berry:
+   --azgl-primary: #8b5cf6
+   --azgl-hover: #7c3aed
+   --azgl-light: #ede9fe
+   --azgl-dark-text: #5b21b6
+
+   Slate:
+   --azgl-primary: #64748b
+   --azgl-hover: #475569
+   --azgl-light: #f1f5f9
+   --azgl-dark-text: #334155
+
+   Auto (Theme):
+   Uses WordPress theme CSS variables if available
+*/
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .azgl-nav {
+        gap: 4px;
+        padding: 12px;
+    }
+
+    .azgl-nav-letter {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .azgl-list {
+        grid-template-columns: 1fr;
+    }
+
+    .azgl-letter {
+        font-size: 1.3rem;
+    }
+
+    .azgl-nav-sub {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .azgl-nav-separator {
+        display: none;
+    }
+
+    .azgl-nav-sub .azgl-nav-letter:first-of-type {
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .azgl-nav-letter {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+
+    .azgl-item a {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+    .azgl-nav {
+        display: none;
+    }
+
+    .azgl-limit-notice {
+        display: none;
+    }
+
+    .azgl-credit {
+        display: none;
+    }
+
+    .azgl-section {
+        page-break-inside: avoid;
+    }
+
+    .azgl-item a {
+        color: #000;
+        background: none;
+        border: none;
+        padding: 4px 0;
+    }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+.azgl-nav-letter:focus,
+.azgl-item a:focus,
+.azgl-back-link:focus,
+.azgl-upgrade-link:focus,
+a.glossary-term:focus {
+    outline: 2px solid var(--azgl-primary);
+    outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .azgl-nav-letter,
+    .azgl-item a,
+    .azgl-back-link,
+    a.glossary-term {
+        transition: none;
+    }
+}
+
+/* ==========================================================================
+   SIDEBAR WIDGET - v2.3.0
+   ========================================================================== */
+
+.azgl-widget {
+    font-size: 14px;
+}
+
+.azgl-widget-az {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.azgl-widget-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.azgl-widget-letter-active {
+    background: var(--azgl-primary);
+    color: #ffffff;
+}
+
+.azgl-widget-letter-active:hover {
+    background: var(--azgl-hover);
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.azgl-widget-letter-inactive {
+    background: var(--azgl-bg-inactive);
+    color: var(--azgl-text-muted);
+    cursor: default;
+}
+
+.azgl-widget-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.azgl-widget-list li {
+    margin-bottom: 8px;
+}
+
+.azgl-widget-list a {
+    color: var(--azgl-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.azgl-widget-list a:hover {
+    color: var(--azgl-primary);
+}
+
+.azgl-widget-link {
+    margin-top: 12px;
+    font-size: 13px;
+}
+
+.azgl-widget-link a {
+    color: var(--azgl-primary);
+    text-decoration: none;
+}
+
+.azgl-widget-link a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   ACTION BUTTONS (Print, etc.) - v2.3.0
+   ========================================================================== */
+
+.azgl-action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--azgl-border);
+}
+
+.azgl-print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--azgl-bg);
+    color: var(--azgl-text);
+    border: 1px solid var(--azgl-border);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.azgl-print-btn:hover {
+    background: var(--azgl-primary);
+    color: #ffffff;
+    border-color: var(--azgl-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.azgl-print-btn .btn-icon {
+    font-size: 18px;
+}
+
+/* ==========================================================================
+   REVERSE LINKS SECTION - v2.3.0
+   ========================================================================== */
+
+.azgl-reverse-links {
+    margin-top: 32px;
+    padding: 20px;
+    background: var(--azgl-bg-inactive);
+    border-radius: 12px;
+}
+
+.azgl-reverse-links h4 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--azgl-text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.azgl-reverse-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.azgl-reverse-links li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.azgl-reverse-links a {
+    color: var(--azgl-primary);
+    text-decoration: none;
+}
+
+.azgl-reverse-links a:hover {
+    text-decoration: underline;
+}
+
+.azgl-reverse-links .post-type {
+    font-size: 11px;
+    color: var(--azgl-text-muted);
+    background: var(--azgl-bg);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+}
+
+/* ==========================================================================
+   PRINT STYLESHEET - v2.3.0
+   ========================================================================== */
+
+@media print {
+    /* Hide navigation and interactive elements */
+    .azgl-nav,
+    .azgl-back-link,
+    .azgl-action-buttons,
+    .azgl-print-btn,
+    .azgl-credit-link,
+    .azgl-upgrade-link {
+        display: none !important;
+    }
+
+    /* Reset colors for printing */
+    .azgl-entries,
+    .azgl-section,
+    .azgl-list,
+    .azgl-item {
+        background: transparent !important;
+        color: #000000 !important;
+        border-color: #cccccc !important;
+    }
+
+    /* Letter headings */
+    .azgl-letter {
+        color: #000000 !important;
+        background: #f0f0f0 !important;
+        padding: 8px 12px !important;
+        margin-top: 24px !important;
+        page-break-after: avoid;
+        border: 1px solid #cccccc !important;
+    }
+
+    /* Entry items */
+    .azgl-item {
+        padding: 8px 0 !important;
+        border-bottom: 1px dotted #cccccc !important;
+    }
+
+    .azgl-item a {
+        color: #000000 !important;
+        text-decoration: none !important;
+    }
+
+    /* Show URL after links */
+    .azgl-item a::after {
+        content: " (" attr(href) ")";
+        font-size: 10px;
+        color: #666666;
+    }
+
+    /* Prevent orphan sections */
+    .azgl-section {
+        page-break-inside: avoid;
+    }
+
+    /* Page margins */
+    @page {
+        margin: 2cm;
+    }
+
+    /* Add title at top */
+    .azgl-entries::before {
+        content: "Glossary";
+        display: block;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 24px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #000000;
+    }
+
+    /* Reverse links for print */
+    .azgl-reverse-links {
+        background: transparent !important;
+        border: 1px solid #cccccc !important;
+        padding: 12px !important;
+    }
+
+    .azgl-reverse-links h4 {
+        color: #000000 !important;
+    }
+
+    .azgl-reverse-links a {
+        color: #000000 !important;
+    }
+}
