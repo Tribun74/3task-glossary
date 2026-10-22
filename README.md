@@ -13,6 +13,7 @@ Create glossaries, dictionaries and knowledge bases using WordPress pages. Featu
 - Tooltip previews on hover
 - Uses WordPress pages (no custom database tables)
 - Search functionality
+- Knowledge base mode: topic overview, table of contents, breadcrumbs, related articles, search and a "Was this helpful?" rating
 - Dark mode support
 - German translation included
 - GDPR-friendly (no external services)

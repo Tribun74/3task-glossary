@@ -17,7 +17,14 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 /**
  * Delete plugin options.
  */
-delete_option( 'azgl_options' );
+$pro_installed = defined( 'AZGL_PRO' ) || is_file( WP_PLUGIN_DIR . '/3task-glossary-pro/3task-glossary-pro.php' );
+if ( ! function_exists( 'get_plugins' ) ) { require_once ABSPATH . 'wp-admin/includes/plugin.php'; }
+foreach ( get_plugins() as $plugin_data ) {
+    if ( '3task-glossary-pro' === ( $plugin_data['TextDomain'] ?? '' ) ) { $pro_installed = true; break; }
+}
+if ( ! $pro_installed ) {
+    delete_option( 'azgl_options' );
+}
 delete_option( 'azgl_version' );
 
 /**

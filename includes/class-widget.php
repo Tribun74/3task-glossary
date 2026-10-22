@@ -101,7 +101,7 @@ class AZ_Glossary_Widget extends WP_Widget {
     private function render_az_navigation( $entries, $glossary_id ) {
         $letters = array();
         foreach ( $entries as $entry ) {
-            $first_letter = $this->get_first_letter( $entry['title'] );
+            $first_letter = $this->get_first_letter( $entry->post_title );
             if ( ! isset( $letters[ $first_letter ] ) ) {
                 $letters[ $first_letter ] = 0;
             }
@@ -140,7 +140,7 @@ class AZ_Glossary_Widget extends WP_Widget {
         usort(
             $entries,
             function ( $a, $b ) {
-                return strtotime( $b['date'] ) - strtotime( $a['date'] );
+                return strtotime( $b->post_date ) - strtotime( $a->post_date );
             }
         );
 
@@ -148,7 +148,7 @@ class AZ_Glossary_Widget extends WP_Widget {
 
         echo '<ul class="azgl-widget-list">';
         foreach ( $entries as $entry ) {
-            echo '<li><a href="' . esc_url( $entry['url'] ) . '">' . esc_html( $entry['title'] ) . '</a></li>';
+            echo '<li><a href="' . esc_url( get_permalink( $entry->ID ) ) . '">' . esc_html( $entry->post_title ) . '</a></li>';
         }
         echo '</ul>';
     }
@@ -165,7 +165,7 @@ class AZ_Glossary_Widget extends WP_Widget {
 
         echo '<ul class="azgl-widget-list">';
         foreach ( $entries as $entry ) {
-            echo '<li><a href="' . esc_url( $entry['url'] ) . '">' . esc_html( $entry['title'] ) . '</a></li>';
+            echo '<li><a href="' . esc_url( get_permalink( $entry->ID ) ) . '">' . esc_html( $entry->post_title ) . '</a></li>';
         }
         echo '</ul>';
     }

@@ -41,6 +41,7 @@ class AZ_Glossary_Frontend {
      * Initialize hooks.
      */
     private function init_hooks() {
+        AZGL_KB::boot( AZGL_PLUGIN_URL, AZGL_VERSION );
         add_filter( 'the_content', array( $this, 'process_content' ), 15 );
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
         add_action( 'wp_head', array( $this, 'output_schema_markup' ) );
@@ -62,6 +63,10 @@ class AZ_Glossary_Frontend {
         }
 
         global $post;
+        if ( $post && AZGL_KB::root_of( $post->ID ) ) {
+            AZGL_KB::print_schema( $post->ID );
+            return;
+        }
         if ( ! $post || ! $post->post_parent ) {
             return;
         }
@@ -110,8 +115,9 @@ class AZ_Glossary_Frontend {
         // Check if this is a glossary page or child of one.
         $is_glossary = $this->options->is_glossary_page( $post->ID );
         $is_entry    = $post->post_parent && $this->options->is_glossary_page( $post->post_parent );
+        $is_kb       = (bool) AZGL_KB::root_of( $post->ID );
 
-        if ( ! $is_glossary && ! $is_entry ) {
+        if ( ! $is_glossary && ! $is_entry && ! $is_kb ) {
             return;
         }
 
@@ -129,6 +135,12 @@ class AZ_Glossary_Frontend {
         // Inline CSS for color scheme variables.
         $inline_css = $this->get_color_scheme_css( $color_scheme, $dark_mode );
         wp_add_inline_style( 'azgl-frontend', $inline_css );
+
+        // Knowledge base mode (v2.4.0).
+        if ( $is_kb ) {
+            AZGL_KB::enqueue_assets( 'azgl-frontend' );
+            return;
+        }
 
         // Load frontend JS for Print functionality (v2.3.0).
         if ( $is_glossary ) {
@@ -157,6 +169,11 @@ class AZ_Glossary_Frontend {
         global $post;
         if ( ! $post ) {
             return $content;
+        }
+
+        // Knowledge base mode (shared with Pro).
+        if ( AZGL_KB::root_of( $post->ID ) ) {
+            return AZGL_KB::render( $post->ID, $content );
         }
 
         // Check if this is a glossary page.
@@ -292,32 +309,37 @@ class AZ_Glossary_Frontend {
      */
     private function render_reverse_links( $post_id ) {
         global $wpdb;
-
-        $post_url = get_permalink( $post_id );
-        $post_url_relative = wp_parse_url( $post_url, PHP_URL_PATH );
-
-        // Search for posts that contain a link to this term.
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Performance optimized query.
-        $results = $wpdb->get_results(
-            $wpdb->prepare(
-                "SELECT ID, post_title, post_type FROM {$wpdb->posts}
-                WHERE post_status = 'publish'
-                AND post_type IN ('post', 'page')
-                AND ID != %d
-                AND (post_content LIKE %s OR post_content LIKE %s)
-                LIMIT 10",
-                $post_id,
-                '%' . $wpdb->esc_like( $post_url ) . '%',
-                '%' . $wpdb->esc_like( $post_url_relative ) . '%'
-            )
-        );
+        if ( ! AZGL_Content::public_page( $post_id ) ) { return ''; }
+        $url = get_permalink( $post_id );
+        $needles = array_merge( array( $url, wp_make_link_relative( $url ), get_the_title( $post_id ) ), AZGL_Content::synonyms( $post_id ) );
+        $conditions = array(); $params = array( $post_id );
+        foreach ( $needles as $needle ) { if ( '' !== $needle ) { $conditions[] = 'post_content LIKE %s'; $params[] = '%' . $wpdb->esc_like( $needle ) . '%'; } }
+        $sql = "SELECT ID FROM {$wpdb->posts} WHERE post_status = 'publish' AND post_password = '' AND post_type IN ('post','page') AND ID != %d AND (" . implode( ' OR ', $conditions ) . ') ORDER BY post_modified_gmt DESC, ID DESC LIMIT 100';
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Every value is prepared.
+        $ids = $wpdb->get_col( $wpdb->prepare( $sql, $params ) );
+        $results = array();
+        foreach ( $ids as $id ) {
+            $source = get_post( $id );
+            if ( ! AZGL_Content::public_page( $id ) ) { continue; }
+            $manual = false;
+            if ( class_exists( 'WP_HTML_Tag_Processor' ) ) {
+                $tags = new WP_HTML_Tag_Processor( $source->post_content );
+                while ( $tags->next_tag( 'A' ) ) {
+                    $href = html_entity_decode( (string) $tags->get_attribute( 'href' ), ENT_QUOTES, 'UTF-8' );
+                    if ( $href && '/' === $href[0] ) { $href = home_url( $href ); }
+                    if ( $href === $url || ( $href && url_to_postid( $href ) === (int) $post_id ) ) { $manual = true; break; }
+                }
+            }
+            if ( $manual || azgl()->linker->links_to( $source, $post_id ) ) { $results[] = $source; }
+            if ( count( $results ) >= 10 ) { break; }
+        }
 
         if ( empty( $results ) ) {
             return '';
         }
 
         $output  = '<div class="azgl-reverse-links">';
-        $output .= '<h4><span>🔗</span> ' . esc_html__( 'This term is mentioned in:', '3task-glossary' ) . '</h4>';
+        $output .= '<h4>' . esc_html__( 'This term is mentioned in:', '3task-glossary' ) . '</h4>';
         $output .= '<ul>';
 
         foreach ( $results as $result ) {

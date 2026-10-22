@@ -1,0 +1,233 @@
+/**
+ * 3task Glossary: knowledge base mode v2.4.0
+ * Uses the color variables of frontend.css (scheme and dark mode).
+ *
+ * @package 3Task_Glossary
+ * @since 2.4.0
+ */
+
+/* Themes limit the width of content blocks; padding must not push boxes out of the text column. */
+.azgl-kb,
+.azgl-kb *,
+.azgl-kb-toc,
+.azgl-kb-related,
+.azgl-kb-rating,
+.azgl-kb-breadcrumbs {
+    box-sizing: border-box;
+}
+
+.azgl-kb-search {
+    display: flex;
+    gap: 8px;
+    margin: 0 0 28px;
+}
+
+.azgl-kb-search input[type="search"] {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px;
+    font-size: 1rem;
+    color: var(--azgl-text);
+    background: var(--azgl-bg);
+    border: 1px solid var(--azgl-border);
+    border-radius: 8px;
+}
+
+.azgl-kb-search input[type="search"]:focus {
+    outline: 2px solid var(--azgl-primary);
+    outline-offset: 1px;
+}
+
+.azgl-kb-search button,
+.azgl-kb-rating button {
+    padding: 10px 18px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--azgl-primary);
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.azgl-kb-search button:hover,
+.azgl-kb-rating button:hover {
+    background: var(--azgl-hover);
+}
+
+.azgl-kb-results {
+    margin: 0 0 32px;
+    padding: 16px 20px;
+    background: var(--azgl-bg);
+    border: 1px solid var(--azgl-border);
+    border-left: 4px solid var(--azgl-primary);
+    border-radius: 8px;
+}
+
+.azgl-kb-results h2 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+}
+
+.azgl-kb-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.azgl-kb-category {
+    padding: 20px;
+    color: var(--azgl-text);
+    background: var(--azgl-bg);
+    border: 1px solid var(--azgl-border);
+    border-radius: 12px;
+}
+
+.azgl-kb-category-title {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.azgl-kb-category-title a {
+    color: var(--azgl-text);
+    text-decoration: none;
+}
+
+.azgl-kb-category-title a:hover {
+    color: var(--azgl-primary);
+}
+
+.azgl-kb-count {
+    display: block;
+    margin: 4px 0 12px;
+    font-size: 0.85rem;
+    color: var(--azgl-text-muted);
+}
+
+.azgl-kb-articles,
+.azgl-kb-results ul,
+.azgl-kb-related ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.azgl-kb-articles li,
+.azgl-kb-results li,
+.azgl-kb-related li {
+    margin: 0;
+    padding: 6px 0;
+    border-top: 1px solid var(--azgl-border);
+}
+
+.azgl-kb-articles li:first-child,
+.azgl-kb-results li:first-child,
+.azgl-kb-related li:first-child {
+    border-top: 0;
+}
+
+.azgl-kb-article,
+.azgl-kb-result,
+.azgl-kb-related-link,
+.azgl-kb-toc-link {
+    color: var(--azgl-primary);
+    text-decoration: none;
+}
+
+.azgl-kb-article:hover,
+.azgl-kb-result:hover,
+.azgl-kb-related-link:hover,
+.azgl-kb-toc-link:hover {
+    text-decoration: underline;
+}
+
+.azgl-kb-breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 20px;
+    padding: 0;
+    font-size: 0.9rem;
+    color: var(--azgl-text-muted);
+    list-style: none;
+}
+
+.azgl-kb-crumb + .azgl-kb-crumb::before {
+    content: "\203A";
+    margin: 0 8px;
+}
+
+.azgl-kb-crumb a {
+    color: inherit;
+}
+
+.azgl-kb-toc {
+    margin: 0 0 28px;
+    padding: 16px 20px;
+    color: var(--azgl-text);
+    background: var(--azgl-bg-inactive);
+    border-radius: 8px;
+}
+
+.azgl-kb-toc-title {
+    margin: 0 0 8px;
+    font-weight: 700;
+}
+
+.azgl-kb-toc ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.azgl-kb-toc ol ol {
+    margin: 2px 0;
+    padding-left: 18px;
+    list-style-type: circle;
+}
+
+.azgl-kb-related {
+    margin: 40px 0 0;
+    padding: 20px;
+    color: var(--azgl-text);
+    background: var(--azgl-bg);
+    border: 1px solid var(--azgl-border);
+    border-radius: 12px;
+}
+
+.azgl-kb-related h2 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+}
+
+.azgl-kb-rating {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 0;
+    padding: 16px 20px;
+    background: var(--azgl-light);
+    color: var(--azgl-dark-text);
+    border-radius: 12px;
+}
+
+.azgl-kb-rating-question {
+    margin: 0 8px 0 0;
+    font-weight: 600;
+}
+
+.azgl-kb-rating.is-done button {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .azgl-kb-rating-question {
+        flex-basis: 100%;
+    }
+}
+
+@media print {
+    .azgl-kb-search,
+    .azgl-kb-rating,
+    .azgl-kb-related {
+        display: none;
+    }
+}

@@ -151,6 +151,9 @@ class AZ_Glossary_Admin {
             case 'remove_glossary':
                 $this->handle_remove_glossary();
                 break;
+            case 'save_glossary_mode':
+                $this->handle_save_glossary_mode();
+                break;
             case 'save_settings':
                 $this->handle_save_settings();
                 break;
@@ -220,6 +223,26 @@ class AZ_Glossary_Admin {
             $this->redirect_with_message( 'success', __( 'Glossary removed successfully.', '3task-glossary' ) );
         } else {
             $this->redirect_with_message( 'error', __( 'Could not remove glossary.', '3task-glossary' ) );
+        }
+    }
+
+    /**
+     * Handle mode switch of one glossary (A-Z glossary or knowledge base).
+     *
+     * Nonce verification happens in process_form_submission().
+     */
+    private function handle_save_glossary_mode() {
+        // phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verified in process_form_submission()
+        $page_id     = isset( $_POST['page_id'] ) ? absint( $_POST['page_id'] ) : 0;
+        $mode        = isset( $_POST['azgl_mode'] ) ? sanitize_key( wp_unslash( $_POST['azgl_mode'] ) ) : 'glossary';
+        $breadcrumbs = isset( $_POST['azgl_kb_breadcrumbs'] );
+        // phpcs:enable WordPress.Security.NonceVerification.Missing
+
+        if ( AZGL_KB::save_settings( $page_id, $mode, $breadcrumbs ) ) {
+            azgl()->clear_glossary_cache( $page_id );
+            $this->redirect_with_message( 'success', __( 'Glossary settings saved.', '3task-glossary' ) );
+        } else {
+            $this->redirect_with_message( 'error', __( 'No glossary specified.', '3task-glossary' ) );
         }
     }
 
@@ -814,6 +837,7 @@ class AZ_Glossary_Admin {
                     <thead>
                         <tr>
                             <th><?php esc_html_e( 'Page', '3task-glossary' ); ?></th>
+                            <th><?php esc_html_e( 'Mode', '3task-glossary' ); ?></th>
                             <th><?php esc_html_e( 'Entries', '3task-glossary' ); ?></th>
                             <th><?php esc_html_e( 'Status', '3task-glossary' ); ?></th>
                             <th><?php esc_html_e( 'Actions', '3task-glossary' ); ?></th>
@@ -842,6 +866,12 @@ class AZ_Glossary_Admin {
                                     <?php else : ?>
                                         <em><?php esc_html_e( 'Page not found', '3task-glossary' ); ?></em>
                                     <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    // Escaped inside AZGL_KB::admin_cell().
+                                    echo AZGL_KB::admin_cell( $glossary, wp_nonce_field( 'azgl_admin_action', 'azgl_nonce', true, false ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                    ?>
                                 </td>
                                 <td>
                                     <?php
@@ -915,6 +945,7 @@ class AZ_Glossary_Admin {
                 <li><?php esc_html_e( 'Add the page above as a glossary.', '3task-glossary' ); ?></li>
                 <li><?php esc_html_e( 'Create child pages under your glossary page - each child page becomes a glossary entry.', '3task-glossary' ); ?></li>
                 <li><?php esc_html_e( 'The A-Z navigation and entry list will be automatically displayed on your glossary page.', '3task-glossary' ); ?></li>
+                <li><?php esc_html_e( 'Knowledge base mode: child pages become categories, their child pages become articles. Articles get a table of contents, breadcrumbs, related articles, a search and a "helpful" rating.', '3task-glossary' ); ?></li>
             </ol>
         </div>
         <?php

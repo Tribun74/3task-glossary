@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: 3task Glossary – Dictionary, Wiki & Knowledge Base
- * Plugin URI: https://wordpress.org/plugins/3task-glossary/
- * Description: Create glossaries, dictionaries & knowledge bases using WordPress pages. A-Z navigation, auto-linking, dark mode. No database, just pages.
- * Version: 2.3.0
- * Requires at least: 5.8
+ * Plugin URI: https://www.3task.de/3task-glossary-pro/
+ * Description: Create glossaries, dictionaries & knowledge bases using WordPress pages. A-Z navigation, knowledge base mode with categories, table of contents and search, auto-linking, dark mode. No database, just pages.
+ * Version: 2.4.0
+ * Requires at least: 6.2
  * Requires PHP: 7.4
  * Author: 3task
  * Author URI: https://www.3task.de
@@ -14,7 +14,7 @@
  * Domain Path: /languages
  *
  * @package 3Task_Glossary
- * @version 2.3.0
+ * @version 2.4.0
  */
 
 // Exit if accessed directly.
@@ -35,7 +35,7 @@ if ( defined( 'AZGL_PLUGIN_FILE' ) && strpos( AZGL_PLUGIN_FILE, '3task-glossary'
 
 // Plugin constants (with defined checks for safety).
 if ( ! defined( 'AZGL_VERSION' ) ) {
-    define( 'AZGL_VERSION', '2.3.0' );
+    define( 'AZGL_VERSION', '2.4.0' );
 }
 if ( ! defined( 'AZGL_PLUGIN_FILE' ) ) {
     define( 'AZGL_PLUGIN_FILE', __FILE__ );
@@ -43,6 +43,8 @@ if ( ! defined( 'AZGL_PLUGIN_FILE' ) ) {
 if ( ! defined( 'AZGL_PLUGIN_DIR' ) ) {
     define( 'AZGL_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 }
+require_once AZGL_PLUGIN_DIR . 'includes/class-content.php';
+require_once AZGL_PLUGIN_DIR . 'includes/class-kb.php';
 if ( ! defined( 'AZGL_PLUGIN_URL' ) ) {
     define( 'AZGL_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 }
@@ -191,6 +193,11 @@ final class AZ_Glossary_Lite {
      * Initialize components.
      */
     public function init_components() {
+        // Pro replaces Free completely: never run both frontends (double schema and navigation).
+        if ( defined( 'AZGL_PRO_VERSION' ) || class_exists( 'AZ_Glossary_Pro', false ) ) {
+            return;
+        }
+
         // Initialize options first.
         $this->options = new AZ_Glossary_Options();
 
@@ -204,6 +211,18 @@ final class AZ_Glossary_Lite {
 
         // Initialize linker.
         $this->linker = new AZ_Glossary_Linker( $this->options );
+    }
+
+    /**
+     * Notice shown while 3task Glossary Pro is active at the same time.
+     */
+    public static function pro_active_notice() {
+        if ( ! current_user_can( 'activate_plugins' ) ) {
+            return;
+        }
+        echo '<div class="notice notice-warning"><p>';
+        esc_html_e( '3task Glossary Pro is active, so the free 3task Glossary plugin is paused. You can safely deactivate and delete the free plugin; your glossaries and settings are kept.', '3task-glossary' );
+        echo '</p></div>';
     }
 
     /**
@@ -336,55 +355,53 @@ final class AZ_Glossary_Lite {
     }
 
     /**
-     * Get glossary entries (child pages).
+     * Get options handler (same API as Pro; the widget relies on it).
      *
-     * @param int $glossary_page_id The glossary parent page ID.
-     * @return array Array of child page objects.
+     * @return AZ_Glossary_Options
      */
-    public function get_glossary_entries( $glossary_page_id ) {
-        $cache_key = 'azgl_entries_' . $glossary_page_id;
-        $entries   = get_transient( $cache_key );
+    public function get_options() {
+        return $this->options;
+    }
 
+    /**
+     * Get all entries for a specific glossary.
+     *
+     * @param int $glossary_id Glossary page ID.
+     * @return array Array of WP_Post objects.
+     */
+    public function get_glossary_entries( $glossary_id ) {
+        if ( ! AZGL_Content::public_page( $glossary_id ) ) { return array(); }
+        $enabled = $this->options->get( 'cache_enabled', true );
+        $cache_key = 'azgl_entries_' . absint( $glossary_id );
+        $entries = $enabled ? get_transient( $cache_key ) : false;
         if ( false === $entries ) {
-            $entries = get_children(
-                array(
-                    'post_parent'    => $glossary_page_id,
-                    'post_type'      => 'page',
-                    'post_status'    => 'publish',
-                    'orderby'        => 'title',
-                    'order'          => 'ASC',
-                    'posts_per_page' => -1,
-                )
-            );
-
-            $options = get_option( 'azgl_options', array() );
-            if ( ! empty( $options['cache_enabled'] ) ) {
-                set_transient( $cache_key, $entries, HOUR_IN_SECONDS );
-            }
+            $entries = get_posts( array( 'post_type' => 'page', 'post_status' => 'publish', 'has_password' => false,
+                'post_parent' => absint( $glossary_id ), 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC' ) );
+            if ( $enabled ) { set_transient( $cache_key, $entries, HOUR_IN_SECONDS ); }
         }
+        return array_values( array_filter( $entries ?: array(), array( 'AZGL_Content', 'public_page' ) ) );
 
-        return $entries;
     }
 
     /**
      * Get entry count for a glossary.
      *
-     * @param int $glossary_page_id The glossary parent page ID.
+     * @param int $glossary_id The glossary parent page ID.
      * @return int Number of entries.
      */
-    public function get_entry_count( $glossary_page_id ) {
-        $entries = $this->get_glossary_entries( $glossary_page_id );
+    public function get_entry_count( $glossary_id ) {
+        $entries = $this->get_glossary_entries( $glossary_id );
         return count( $entries );
     }
 
     /**
      * Clear cache for a specific glossary.
      *
-     * @param int $glossary_page_id The glossary parent page ID.
+     * @param int $glossary_id The glossary parent page ID.
      */
-    public function clear_glossary_cache( $glossary_page_id ) {
-        delete_transient( 'azgl_entries_' . $glossary_page_id );
-        delete_transient( 'azgl_az_nav_' . $glossary_page_id );
+    public function clear_glossary_cache( $glossary_id ) {
+        delete_transient( 'azgl_entries_' . $glossary_id );
+        delete_transient( 'azgl_az_nav_' . $glossary_id );
     }
 }
 
@@ -398,6 +415,17 @@ if ( ! function_exists( 'azgl' ) ) {
         return AZ_Glossary_Lite::get_instance();
     }
 }
+
+// Pro active at the same time: tell the admin, independent of plugin load order.
+add_action(
+    'plugins_loaded',
+    static function () {
+        if ( defined( 'AZGL_PRO_VERSION' ) && is_admin() ) {
+            add_action( 'admin_notices', array( 'AZ_Glossary_Lite', 'pro_active_notice' ) );
+        }
+    },
+    5
+);
 
 // Initialize plugin.
 azgl();

@@ -1,18 +1,22 @@
 === 3task Glossary – Dictionary, Wiki & Knowledge Base ===
 Contributors: 3task
-Tags: glossary, dictionary, wiki, knowledge base, tooltip
-Requires at least: 5.8
-Tested up to: 6.9
-Stable tag: 2.3.0
+Tags: glossary, dictionary, wiki, knowledge-base, a-z-index
+Requires at least: 6.2
+Tested up to: 7.1
+Stable tag: 2.4.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Create glossaries, dictionaries, wikis & knowledge bases using WordPress pages. A-Z navigation, tooltip support, auto-linking, dark mode. No database tables, just pages.
+Glossary or knowledge base on normal WordPress pages. A-Z index, categories, table of contents, search, auto-linking. No custom tables.
 
 == Description ==
 
-**3task Glossary** is the easiest glossary plugin for WordPress. Create professional glossaries, dictionaries, wikis and knowledge bases using the page hierarchy you already know. No complex setup required - just select a page as your glossary, and its child pages become your entries. Works as a dictionary plugin, wiki plugin, encyclopedia or any kind of term-based knowledge base.
+Most glossary plugins store your terms in their own database tables. If the plugin is abandoned, your content is stranded. 3task Glossary uses normal WordPress pages instead, so every term stays a page you own, indexable and exportable, with or without this plugin.
+
+You get an A-Z index, automatic linking of terms within your glossary pages (site-wide in Pro), reverse links and valid `DefinedTerm` structured data. Nothing is loaded from an external server.
+
+**3task Glossary** helps you create professional glossaries, dictionaries, wikis and knowledge bases using the WordPress page hierarchy you already know. No complex setup required - just select a page as your glossary, and its child pages become your entries.
 
 Perfect for:
 * **Glossaries** - Define technical terms, jargon, acronyms
@@ -28,6 +32,17 @@ Perfect for:
 3. Activate the glossary in plugin settings
 4. Your glossary page automatically shows A-Z navigation and entry list
 
+### Knowledge Base Mode (new in 2.4)
+
+Switch any glossary to knowledge base mode. The page tree becomes your help center:
+
+* **Topic overview:** Child pages become categories, their child pages become articles. Pages without children are listed under "General".
+* **Table of contents:** Built from the H2 and H3 headings of each article, with anchors.
+* **Breadcrumbs:** Visible on every article, with BreadcrumbList markup. The markup switches itself off when Yoast SEO, Rank Math or All in One SEO is active, and you can turn breadcrumbs off per knowledge base.
+* **Related articles:** Other articles of the same category.
+* **Simple search:** Searches titles and text of the articles in this knowledge base. No external service.
+* **"Was this helpful?" rating:** Counts yes and no per article. No IP address, no cookie, no personal data. The totals appear in the plugin settings.
+
 ### Key Features
 
 * **Uses WordPress Pages** - No new post types, no database tables. Just pages.
@@ -36,16 +51,20 @@ Perfect for:
 * **Dark Mode Support** - Auto (system), Light, or Dark mode
 * **German Umlaut Support** - Proper handling of Ä, Ö, Ü, ß
 * **Auto-Linking** - Automatically link glossary terms within your glossary pages
-* **Responsive Design** - Works perfectly on all devices
+* **Responsive Design** - Layouts adapt to narrow screens
 * **Lightweight** - No bloat, fast loading, SEO-friendly structure
 * **Multi-Language Ready** - Works with RTL languages, Hebrew, Arabic, Greek
+* **Unlimited glossaries and entries** - No artificial limit
+* **Structured definitions** - Optional DefinedTerm markup
+* **Sidebar widget** - A-Z, recent or popular entries
+* **Reverse links** - Find posts that link to a term
 
 ### Pro Version Features
 
 Upgrade to **3task Glossary Pro** for advanced features:
 
-**🚀 SITE-WIDE AUTO-LINKING (SEO Power Feature!)**
-The #1 reason to upgrade: Automatically link glossary terms across your ENTIRE website - not just on glossary pages! Every blog post, every page, every custom post type. One glossary term mentioned? Automatic link. Massive internal linking boost for SEO.
+**Site-wide auto-linking**
+Pro extends linking beyond glossary pages to configured posts and pages. Existing links, headings and code are excluded. Choose where links appear and how often each term is linked.
 
 * **Site-Wide Auto-Linking** - Link glossary terms across ALL posts and pages automatically
 * **5 Tooltip Themes** - Show definitions on hover (Light, Dark, Gradient, Minimal, Bordered)
@@ -54,10 +73,9 @@ The #1 reason to upgrade: Automatically link glossary terms across your ENTIRE w
 * **Synonyms** - Link multiple terms (AI, KI, Artificial Intelligence) to one entry
 * **CSV Import/Export** - Bulk create hundreds of entries, backup your glossary
 * **6 Color Schemes** - Emerald, Ocean, Sunset, Berry, Slate + Custom colors
-* **Schema.org SEO** - DefinedTermSet markup for better search visibility
 * **Priority Support** - Email support with fast response
 
-[Upgrade to Pro](https://www.3task.de/wordpress-plugins/3task-glossary-pro/)
+[Upgrade to Pro](https://www.3task.de/en/glossary-pro/)
 
 == Installation ==
 
@@ -92,6 +110,17 @@ The #1 reason to upgrade: Automatically link glossary terms across your ENTIRE w
 3. Go to 3task Glossary menu and add your page as a glossary
 4. That's it! Your page now shows A-Z navigation and links to all child pages.
 
+= How do I build a knowledge base? =
+
+1. Create a page for your help center, for example "Help".
+2. Create one child page per topic, for example "Getting started" and "Billing". These become categories.
+3. Create your articles as child pages of these topics.
+4. Add the "Help" page as a glossary and switch its mode to "Knowledge base" in the glossary list.
+
+= Does the rating store personal data? =
+
+No. A vote only increases one of two counters on the article. The visitor's browser remembers in local storage that it has voted, so the buttons are hidden on the next visit. No IP address, user agent or cookie is stored.
+
 = Can I use this for a dictionary or wiki? =
 
 Yes! The plugin works great for dictionaries, wikis, knowledge bases, lexicons, and any A-Z indexed content. Each child page becomes an entry with its own URL.
@@ -108,7 +137,7 @@ Yes! The plugin uses clean, semantic HTML that works with any WordPress theme. I
 
 **Free version:** Automatically links glossary terms within your glossary pages only.
 
-**Pro version:** Site-Wide Auto-Linking! Automatically links glossary terms across your ENTIRE website - every blog post, every page. Huge SEO benefit through internal linking. This is the #1 reason users upgrade to Pro.
+**Pro version:** Extends linking to configured posts and pages across your site, with optional tooltips. Existing links, headings and code remain unchanged.
 
 = Is it SEO-friendly? =
 
@@ -132,6 +161,17 @@ Yes! Choose from 2 color schemes (Emerald, Slate), 2 navigation styles (Buttons,
 6. **Dark Mode** - Automatic dark mode support
 
 == Changelog ==
+
+= 2.4.0 =
+* New: Knowledge base mode per glossary with topic overview, table of contents, breadcrumbs, related articles, search and a "Was this helpful?" rating.
+* New: Mode switch and breadcrumb option in the glossary list, with article and rating totals.
+* Knowledge bases are not used as an auto-linking source, so category names are not linked in your texts.
+
+= 2.3.1 =
+* Protect private and password-protected glossary pages and parents.
+* Preserve HTML when linking terms; improve punctuation, synonyms and cache invalidation.
+* Fix all widget modes and protect shared Pro settings during Free uninstall.
+
 
 = 2.3.0 =
 * New: Completely redesigned admin interface with 3task Plugin Design System v1.0
@@ -178,6 +218,13 @@ Yes! Choose from 2 color schemes (Emerald, Slate), 2 navigation styles (Buttons,
 
 == Upgrade Notice ==
 
+= 2.4.0 =
+New knowledge base mode. Existing A-Z glossaries are not changed.
+
+= 2.3.1 =
+Security and reliability update. Back up your site before updating. Requires WordPress 6.2 or newer.
+
+
 = 2.3.0 =
 Major update! New admin dashboard, Schema.org SEO, sidebar widget, reverse links, print styles. Fully DSGVO-compliant.
 
@@ -218,7 +265,7 @@ Major update! Now uses WordPress pages instead of custom database. Create your g
 
 == About 3task.de ==
 
-3task Glossary is developed by **3task.de**, specialists in WordPress plugin development. We create focused, lightweight tools that solve real problems.
+3task Glossary is developed by **3task.de**, Frank Stemmler, a WordPress developer. The plugin keeps glossary content in ordinary WordPress pages so your definitions remain available independently of the plugin.
 
 [Visit 3task.de](https://www.3task.de/)
 
@@ -230,7 +277,7 @@ Major update! Now uses WordPress pages instead of custom database. Create your g
 
 **Pro Version:**
 * Priority email support
-* 24-hour response time
+* Support from the plugin developer
 * Custom development available
 
-[Get Pro Support](https://www.3task.de/3task-glossary-pro/)
+[Get Pro Support](https://www.3task.de/en/glossary-pro/)

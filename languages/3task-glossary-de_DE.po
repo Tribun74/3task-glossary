@@ -290,3 +290,69 @@ msgstr "Upgrade fuer mehr"
 
 msgid "Powered by"
 msgstr "Powered by"
+
+# 2.4.0 Wissensdatenbank-Modus
+msgid "General"
+msgstr "Allgemein"
+
+msgid "%d article"
+msgid_plural "%d articles"
+msgstr[0] "%d Artikel"
+msgstr[1] "%d Artikel"
+
+msgid "Contents"
+msgstr "Inhalt"
+
+msgid "Related articles"
+msgstr "Verwandte Artikel"
+
+msgid "Was this article helpful?"
+msgstr "War dieser Artikel hilfreich?"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nein"
+
+msgid "Breadcrumbs"
+msgstr "Brotkrumen-Navigation"
+
+msgid "Search articles"
+msgstr "Artikel durchsuchen"
+
+msgid "Search"
+msgstr "Suchen"
+
+msgid "Results for \"%s\""
+msgstr "Ergebnisse für „%s“"
+
+msgid "No articles found."
+msgstr "Keine Artikel gefunden."
+
+msgid "Article not found."
+msgstr "Artikel nicht gefunden."
+
+msgid "Thank you for your feedback!"
+msgstr "Danke für deine Rückmeldung!"
+
+msgid "Mode"
+msgstr "Modus"
+
+msgid "A-Z glossary"
+msgstr "A-Z-Glossar"
+
+msgid "Knowledge base"
+msgstr "Wissensdatenbank"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "%1$d categories, %2$d articles. Rated helpful: %3$d, not helpful: %4$d."
+msgstr "%1$d Kategorien, %2$d Artikel. Hilfreich: %3$d, nicht hilfreich: %4$d."
+
+msgid "Glossary settings saved."
+msgstr "Glossar-Einstellungen gespeichert."
+
+msgid "Knowledge base mode: child pages become categories, their child pages become articles. Articles get a table of contents, breadcrumbs, related articles, a search and a \"helpful\" rating."
+msgstr "Modus Wissensdatenbank: Unterseiten werden zu Kategorien, deren Unterseiten zu Artikeln. Artikel bekommen ein Inhaltsverzeichnis, Brotkrumen-Navigation, verwandte Artikel, eine Suche und die Bewertung „hilfreich“."

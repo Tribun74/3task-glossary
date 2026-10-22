@@ -1,427 +1,1000 @@
-# Copyright (C) 2024 3task.de
-# This file is distributed under the GPLv2 or later.
+# Copyright (C) 2026 3task
+# This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: A-Z Glossary 2.0.0\n"
-"Report-Msgid-Bugs-To: https://3task.de/\n"
-"POT-Creation-Date: 2024-12-30 12:00+0000\n"
+"Project-Id-Version: 3task Glossary – Dictionary, Wiki & Knowledge Base 2.4.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/3task-glossary\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2026-10-20T12:02:57+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: 3task-glossary\n"
 
-#: a-z-glossary.php
-msgid "A-Z Glossary"
+#. Plugin Name of the plugin
+#: 3task-glossary.php
+msgid "3task Glossary – Dictionary, Wiki & Knowledge Base"
 msgstr ""
 
-#: includes/class-admin.php
-msgid "A-Z Glossary"
+#. Plugin URI of the plugin
+#: 3task-glossary.php
+msgid "https://www.3task.de/3task-glossary-pro/"
 msgstr ""
 
-#: includes/class-admin.php
-msgid "Settings"
+#. Description of the plugin
+#: 3task-glossary.php
+msgid "Create glossaries, dictionaries & knowledge bases using WordPress pages. A-Z navigation, knowledge base mode with categories, table of contents and search, auto-linking, dark mode. No database, just pages."
 msgstr ""
 
-#. Tab Labels
-msgid "Glossaries"
+#. Author of the plugin
+#: 3task-glossary.php
+msgid "3task"
 msgstr ""
 
-msgid "Design"
+#. Author URI of the plugin
+#: 3task-glossary.php
+msgid "https://www.3task.de"
 msgstr ""
 
-msgid "Support"
+#: 3task-glossary.php:30
+msgid "Please deactivate the old \"Simple SEO Glossary\" plugin. Both plugins cannot run simultaneously."
 msgstr ""
 
-msgid "Pro"
+#: 3task-glossary.php:224
+msgid "3task Glossary Pro is active, so the free 3task Glossary plugin is paused. You can safely deactivate and delete the free plugin; your glossaries and settings are kept."
 msgstr ""
 
-msgid "Help"
+#: 3task-glossary.php:236
+msgid "3task Glossary requires PHP 7.4 or higher."
 msgstr ""
 
-#. Glossaries Tab
-msgid "Your Glossaries"
+#: 3task-glossary.php:246
+msgid "3task Glossary requires WordPress 5.8 or higher."
 msgstr ""
 
-msgid "Add your first glossary to get started."
+#: includes/class-admin.php:63
+#: includes/class-admin.php:64
+#: includes/class-admin.php:457
+#: includes/class-widget.php:29
+msgid "3task Glossary"
 msgstr ""
 
-msgid "Add Glossary"
-msgstr ""
-
-msgid "Select a page..."
-msgstr ""
-
-msgid "Select a WordPress page to use as a glossary. Child pages will become entries."
-msgstr ""
-
-msgid "Page"
-msgstr ""
-
-msgid "Entries"
-msgstr ""
-
-msgid "Status"
-msgstr ""
-
-msgid "Actions"
-msgstr ""
-
-msgid "Active"
-msgstr ""
-
-msgid "Inactive"
-msgstr ""
-
-msgid "Remove"
-msgstr ""
-
+#: includes/class-admin.php:105
+#: includes/class-admin.php:893
 msgid "Are you sure you want to remove this glossary?"
 msgstr ""
 
-msgid "View"
-msgstr ""
-
-msgid "Edit"
-msgstr ""
-
-msgid "Glossary added successfully."
-msgstr ""
-
-msgid "Glossary removed."
-msgstr ""
-
+#: includes/class-admin.php:106
+#: includes/class-admin.php:274
 msgid "Settings saved."
 msgstr ""
 
-msgid "Please select a page."
+#: includes/class-admin.php:107
+msgid "An error occurred."
 msgstr ""
 
+#: includes/class-admin.php:136
+msgid "Security check failed."
+msgstr ""
+
+#: includes/class-admin.php:141
+msgid "You do not have permission to perform this action."
+msgstr ""
+
+#: includes/class-admin.php:184
+msgid "No page selected."
+msgstr ""
+
+#: includes/class-admin.php:189
+msgid "Invalid page selected."
+msgstr ""
+
+#: includes/class-admin.php:198
+msgid "Glossary added successfully."
+msgstr ""
+
+#: includes/class-admin.php:200
 msgid "This page is already a glossary."
 msgstr ""
 
-msgid "Maximum number of glossaries reached."
+#: includes/class-admin.php:216
+#: includes/class-admin.php:245
+msgid "No glossary specified."
 msgstr ""
 
-msgid "Maximum entries reached"
+#: includes/class-admin.php:223
+msgid "Glossary removed successfully."
 msgstr ""
 
-#. Limits
-msgid "Glossary Limit"
+#: includes/class-admin.php:225
+msgid "Could not remove glossary."
 msgstr ""
 
-msgid "Entry Limit"
+#: includes/class-admin.php:243
+msgid "Glossary settings saved."
 msgstr ""
 
-msgid "of"
+#: includes/class-admin.php:317
+msgid "Design settings saved."
 msgstr ""
 
-msgid "used"
+#: includes/class-admin.php:333
+msgid "Supporter settings saved."
 msgstr ""
 
-msgid "Unlimited"
+#: includes/class-admin.php:352
+msgid "Language saved. Please reload the page to see changes."
 msgstr ""
 
-#. Supporter Mode
-msgid "Supporter Mode"
+#: includes/class-admin.php:402
+#: includes/class-admin.php:424
+#: includes/class-admin.php:671
+msgid "Settings"
 msgstr ""
 
-msgid "Enable Supporter Mode"
+#: includes/class-admin.php:403
+msgid "Go Pro"
 msgstr ""
 
-msgid "Show a small credit link on glossary pages to unlock extra limits."
+#: includes/class-admin.php:415
+msgid "Dashboard"
 msgstr ""
 
-msgid "Current Limits"
+#: includes/class-admin.php:419
+#: includes/class-admin.php:567
+msgid "Glossaries"
 msgstr ""
 
-msgid "Lite"
+#: includes/class-admin.php:428
+msgid "Design"
 msgstr ""
 
-msgid "Supporter"
+#: includes/class-admin.php:432
+msgid "Help"
 msgstr ""
 
-msgid "Pro"
+#: includes/class-admin.php:460
+#: includes/class-admin.php:586
+#: includes/class-admin.php:622
+#: includes/class-admin.php:887
+msgid "Active"
 msgstr ""
 
-msgid "glossary"
+#: includes/class-admin.php:467
+msgid "Docs"
 msgstr ""
 
-msgid "glossaries"
+#: includes/class-admin.php:471
+msgid "Support"
 msgstr ""
 
-msgid "entries"
+#: includes/class-admin.php:547
+msgid "Welcome to 3task Glossary!"
 msgstr ""
 
-msgid "unlimited"
+#: includes/class-admin.php:548
+msgid "Create your first glossary in just 2 steps: Add a parent page, then create child pages for each term."
 msgstr ""
 
-#. Design Tab
-msgid "Color Scheme"
+#: includes/class-admin.php:552
+msgid "Create First Glossary"
 msgstr ""
 
-msgid "Choose the color theme for your glossary."
+#: includes/class-admin.php:578
+msgid "Terms"
 msgstr ""
 
-msgid "Emerald"
+#: includes/class-admin.php:592
+msgid "v2.3"
 msgstr ""
 
-msgid "Ocean"
+#: includes/class-admin.php:595
+#: includes/class-admin.php:693
+msgid "Reverse Links"
 msgstr ""
 
-msgid "Sunset"
+#: includes/class-admin.php:605
+#: includes/class-admin.php:821
+msgid "Your Glossaries"
 msgstr ""
 
-msgid "Berry"
+#: includes/class-admin.php:619
+msgid "Unknown"
 msgstr ""
 
-msgid "Slate"
+#: includes/class-admin.php:624
+#: includes/class-admin.php:889
+msgid "Inactive"
 msgstr ""
 
-msgid "Auto (Theme)"
+#. translators: %d: number of additional glossaries
+#: includes/class-admin.php:638
+#, php-format
+msgid "View all %d glossaries →"
 msgstr ""
 
-msgid "Navigation Style"
+#: includes/class-admin.php:647
+msgid "No glossaries yet. Create your first one!"
 msgstr ""
 
-msgid "Choose how the A-Z navigation looks."
+#: includes/class-admin.php:658
+msgid "Quick Actions"
 msgstr ""
 
-msgid "Buttons"
+#: includes/class-admin.php:663
+#: includes/class-admin.php:934
+msgid "Add Glossary"
 msgstr ""
 
-msgid "Pills"
+#: includes/class-admin.php:667
+msgid "Customize Design"
 msgstr ""
 
-msgid "Minimal"
-msgstr ""
-
-msgid "Dark Mode"
-msgstr ""
-
-msgid "Control how dark mode is handled."
-msgstr ""
-
-msgid "Auto (System)"
-msgstr ""
-
-msgid "Light"
-msgstr ""
-
-msgid "Dark"
-msgstr ""
-
-msgid "Preview"
-msgstr ""
-
-#. Auto-Linking
-msgid "Auto-Linking"
-msgstr ""
-
-msgid "Enable Auto-Linking"
-msgstr ""
-
-msgid "Automatically link glossary terms within your content."
-msgstr ""
-
-msgid "Link Mode"
-msgstr ""
-
-msgid "Selective"
-msgstr ""
-
-msgid "Only on glossary pages"
-msgstr ""
-
-msgid "Global"
-msgstr ""
-
-msgid "On all pages and posts"
-msgstr ""
-
-msgid "Link Style"
-msgstr ""
-
-msgid "Highlight"
-msgstr ""
-
-msgid "Background highlight"
-msgstr ""
-
-msgid "Underline"
-msgstr ""
-
-msgid "Dashed underline"
-msgstr ""
-
-msgid "Plain"
-msgstr ""
-
-msgid "No styling"
-msgstr ""
-
-#. Support Tab
-msgid "Get Support"
-msgstr ""
-
-msgid "Need help with A-Z Glossary Lite?"
-msgstr ""
-
+#: includes/class-admin.php:675
 msgid "Documentation"
 msgstr ""
 
-msgid "Read our getting started guide and FAQ."
+#: includes/class-admin.php:683
+msgid "v2.3 Features"
 msgstr ""
 
-msgid "View Documentation"
+#: includes/class-admin.php:685
+msgid "Included in Free"
 msgstr ""
 
-msgid "Community Support"
+#: includes/class-admin.php:689
+#: includes/class-admin.php:728
+#: includes/class-admin.php:1092
+msgid "Schema.org SEO"
 msgstr ""
 
-msgid "Ask questions and get help from the community."
+#: includes/class-admin.php:697
+msgid "Print Styles"
 msgstr ""
 
-msgid "Visit Forums"
+#: includes/class-admin.php:701
+#: includes/class-admin.php:729
+msgid "Sidebar Widget"
 msgstr ""
 
+#: includes/class-admin.php:715
+#: includes/class-admin.php:769
+msgid "Become a Supporter"
+msgstr ""
+
+#: includes/class-admin.php:716
+msgid "Join website owners who give back to open source"
+msgstr ""
+
+#: includes/class-admin.php:724
+msgid "What you get for FREE:"
+msgstr ""
+
+#: includes/class-admin.php:727
+msgid "Unlimited Glossaries"
+msgstr ""
+
+#: includes/class-admin.php:730
+msgid "6 Color Themes"
+msgstr ""
+
+#: includes/class-admin.php:731
+#: includes/class-admin.php:1219
+msgid "Dark Mode"
+msgstr ""
+
+#: includes/class-admin.php:733
+msgid "Worth $99+ — yours free, forever."
+msgstr ""
+
+#: includes/class-admin.php:739
+msgid "Give back with one click:"
+msgstr ""
+
+#: includes/class-admin.php:740
+msgid "Add a tiny \"Powered by\" link to help others discover this plugin."
+msgstr ""
+
+#: includes/class-admin.php:752
+msgid "Supporter"
+msgstr ""
+
+#: includes/class-admin.php:754
+msgid "Yes, I want to support!"
+msgstr ""
+
+#: includes/class-admin.php:760
+msgid "Appears as:"
+msgstr ""
+
+#: includes/class-admin.php:767
+msgid "✓ You're a Supporter!"
+msgstr ""
+
+#: includes/class-admin.php:779
+msgid "Other ways to help:"
+msgstr ""
+
+#: includes/class-admin.php:781
+msgid "5-Star Review"
+msgstr ""
+
+#: includes/class-admin.php:784
+msgid "Answer Questions"
+msgstr ""
+
+#: includes/class-admin.php:792
+msgid "PRO"
+msgstr ""
+
+#: includes/class-admin.php:793
+msgid "Unlock More Power"
+msgstr ""
+
+#: includes/class-admin.php:794
+msgid "Take your glossary to the next level"
+msgstr ""
+
+#: includes/class-admin.php:797
+msgid "Site-wide Auto-Linking"
+msgstr ""
+
+#: includes/class-admin.php:798
+#: includes/class-admin.php:1416
+msgid "Hover Tooltips"
+msgstr ""
+
+#: includes/class-admin.php:799
+#: includes/class-admin.php:1423
+msgid "Search Function"
+msgstr ""
+
+#: includes/class-admin.php:800
+msgid "CSV Import/Export"
+msgstr ""
+
+#: includes/class-admin.php:801
+msgid "View Statistics"
+msgstr ""
+
+#: includes/class-admin.php:802
 msgid "Priority Support"
 msgstr ""
 
-msgid "Get fast, personal support with the Pro version."
+#: includes/class-admin.php:806
+#: includes/class-admin.php:1437
+msgid "Learn More About Pro"
 msgstr ""
 
-msgid "Learn More"
+#. translators: %d: current number of glossaries
+#: includes/class-admin.php:828
+#, php-format
+msgid "You have %d glossary/glossaries configured."
 msgstr ""
 
-#. Pro Tab
-msgid "Upgrade to Pro"
+#: includes/class-admin.php:839
+#: includes/class-frontend.php:346
+msgid "Page"
 msgstr ""
 
-msgid "Unlock the full potential of A-Z Glossary"
+#: includes/class-admin.php:840
+#: includes/class-kb.php:138
+msgid "Mode"
 msgstr ""
 
-msgid "Unlimited glossaries"
+#: includes/class-admin.php:841
+msgid "Entries"
 msgstr ""
 
-msgid "Unlimited entries per glossary"
+#: includes/class-admin.php:842
+msgid "Status"
 msgstr ""
 
-msgid "Advanced auto-linking options"
+#: includes/class-admin.php:843
+msgid "Actions"
 msgstr ""
 
-msgid "Tooltips on hover"
+#: includes/class-admin.php:859
+msgid "View"
 msgstr ""
 
-msgid "Import/Export functionality"
+#: includes/class-admin.php:863
+msgid "Edit"
 msgstr ""
 
-msgid "Priority email support"
+#: includes/class-admin.php:867
+msgid "Page not found"
 msgstr ""
 
-msgid "Regular updates"
+#. translators: %d: number of glossary entries
+#: includes/class-admin.php:880
+#, php-format
+msgid "%d entries"
 msgstr ""
 
-msgid "Get Pro Now"
+#: includes/class-admin.php:898
+msgid "Remove"
 msgstr ""
 
-msgid "Current: Lite Version"
+#: includes/class-admin.php:908
+msgid "No glossaries configured yet. Select a page below to create your first glossary."
 msgstr ""
 
-msgid "Current: Supporter Mode"
+#: includes/class-admin.php:913
+msgid "Add New Glossary"
 msgstr ""
 
-#. Help Tab
-msgid "Quick Start Guide"
+#: includes/class-admin.php:915
+msgid "Select a page to use as a glossary. Child pages of this page will become glossary entries."
 msgstr ""
 
-msgid "Step 1: Create a Parent Page"
+#: includes/class-admin.php:926
+msgid "— Select Page —"
 msgstr ""
 
-msgid "Create a new WordPress page that will serve as your glossary index (e.g., \"Glossary\" or \"Dictionary\")."
+#: includes/class-admin.php:942
+msgid "How It Works"
 msgstr ""
 
-msgid "Step 2: Create Entry Pages"
+#: includes/class-admin.php:944
+msgid "Create a WordPress page that will serve as your glossary (e.g., \"Glossary\" or \"Terms\")."
 msgstr ""
 
-msgid "Create child pages under your glossary page. Each child page becomes a glossary entry."
+#: includes/class-admin.php:945
+msgid "Add the page above as a glossary."
 msgstr ""
 
-msgid "Step 3: Activate Glossary"
+#: includes/class-admin.php:946
+msgid "Create child pages under your glossary page - each child page becomes a glossary entry."
 msgstr ""
 
-msgid "Go to the Glossaries tab and add your parent page as a glossary."
+#: includes/class-admin.php:947
+msgid "The A-Z navigation and entry list will be automatically displayed on your glossary page."
 msgstr ""
 
-msgid "Step 4: Visit Your Glossary"
+#: includes/class-admin.php:948
+msgid "Knowledge base mode: child pages become categories, their child pages become articles. Articles get a table of contents, breadcrumbs, related articles, a search and a \"helpful\" rating."
 msgstr ""
 
+#: includes/class-admin.php:969
+msgid "Language Settings"
+msgstr ""
+
+#: includes/class-admin.php:978
+msgid "Plugin Language"
+msgstr ""
+
+#: includes/class-admin.php:1000
+msgid "Choose the language for the plugin interface. \"Auto\" uses your WordPress site language."
+msgstr ""
+
+#: includes/class-admin.php:1008
+msgid "Save Language"
+msgstr ""
+
+#: includes/class-admin.php:1015
+msgid "Linking Settings"
+msgstr ""
+
+#: includes/class-admin.php:1024
+msgid "Auto-Linking"
+msgstr ""
+
+#: includes/class-admin.php:1029
+#: includes/class-options.php:403
+msgid "Disabled"
+msgstr ""
+
+#: includes/class-admin.php:1032
+msgid "Glossary pages only"
+msgstr ""
+
+#: includes/class-admin.php:1036
+msgid "Automatically link glossary terms within your content."
+msgstr ""
+
+#: includes/class-admin.php:1042
+msgid "Link First Occurrence Only"
+msgstr ""
+
+#: includes/class-admin.php:1047
+msgid "Only link the first occurrence of each term per page"
+msgstr ""
+
+#: includes/class-admin.php:1053
+msgid "Link CSS Class"
+msgstr ""
+
+#: includes/class-admin.php:1059
+msgid "CSS class added to linked terms for custom styling."
+msgstr ""
+
+#: includes/class-admin.php:1065
+msgid "Performance"
+msgstr ""
+
+#: includes/class-admin.php:1070
+msgid "Caching"
+msgstr ""
+
+#: includes/class-admin.php:1075
+msgid "Enable caching for better performance"
+msgstr ""
+
+#: includes/class-admin.php:1078
+msgid "Caches glossary entries for 1 hour. Disable for testing."
+msgstr ""
+
+#: includes/class-admin.php:1085
+msgid "Advanced Features"
+msgstr ""
+
+#: includes/class-admin.php:1086
+msgid "NEW in v2.3"
+msgstr ""
+
+#: includes/class-admin.php:1097
+msgid "Add DefinedTerm schema markup to glossary entries"
+msgstr ""
+
+#: includes/class-admin.php:1100
+msgid "Helps Google understand your glossary terms. Can improve search visibility and enable rich results."
+msgstr ""
+
+#: includes/class-admin.php:1106
+msgid "Print Button"
+msgstr ""
+
+#: includes/class-admin.php:1111
+msgid "Show \"Print Glossary\" button on glossary pages"
+msgstr ""
+
+#: includes/class-admin.php:1114
+msgid "Allows visitors to print a clean, formatted version of your glossary. Great for educational use."
+msgstr ""
+
+#: includes/class-admin.php:1122
+msgid "Save Settings"
+msgstr ""
+
+#: includes/class-admin.php:1152
+msgid "Design Settings"
+msgstr ""
+
+#: includes/class-admin.php:1161
+msgid "Navigation Style"
+msgstr ""
+
+#: includes/class-admin.php:1172
+msgid "Choose the style for the A-Z letter navigation."
+msgstr ""
+
+#: includes/class-admin.php:1178
+msgid "Inactive Letters"
+msgstr ""
+
+#: includes/class-admin.php:1196
+msgid "Accessibility: \"Accessible\" mode is recommended for screen reader compatibility."
+msgstr ""
+
+#: includes/class-admin.php:1202
+msgid "Color Scheme"
+msgstr ""
+
+#: includes/class-admin.php:1230
+msgid "Auto detects user system preference."
+msgstr ""
+
+#: includes/class-admin.php:1238
+msgid "Save Design"
+msgstr ""
+
+#: includes/class-admin.php:1245
+msgid "Preview"
+msgstr ""
+
+#: includes/class-admin.php:1296
+msgid "Getting Started"
+msgstr ""
+
+#: includes/class-admin.php:1299
+msgid "Creating Your First Glossary"
+msgstr ""
+
+#: includes/class-admin.php:1302
+msgid "Create a parent page:"
+msgstr ""
+
+#: includes/class-admin.php:1303
+msgid "Go to Pages → Add New and create a page (e.g., \"Glossary\")."
+msgstr ""
+
+#: includes/class-admin.php:1306
+msgid "Register as glossary:"
+msgstr ""
+
+#: includes/class-admin.php:1307
+msgid "Go to 3task Glossary → Glossaries and select your page."
+msgstr ""
+
+#: includes/class-admin.php:1310
+msgid "Add entries:"
+msgstr ""
+
+#: includes/class-admin.php:1311
+msgid "Create child pages under your glossary page. Each child page becomes an entry."
+msgstr ""
+
+#: includes/class-admin.php:1314
+msgid "Done!"
+msgstr ""
+
+#: includes/class-admin.php:1315
 msgid "Visit your glossary page to see the A-Z navigation and entry list."
 msgstr ""
 
-msgid "Tips"
+#: includes/class-admin.php:1321
+msgid "Adding Glossary Entries"
 msgstr ""
 
-msgid "Page titles become entry names"
+#: includes/class-admin.php:1323
+msgid "To add entries to your glossary:"
 msgstr ""
 
-msgid "First letter determines A-Z sorting"
+#: includes/class-admin.php:1326
+msgid "Go to Pages → Add New"
 msgstr ""
 
-msgid "German umlauts are sorted correctly"
+#: includes/class-admin.php:1327
+msgid "Enter the term as the page title"
 msgstr ""
 
-msgid "Sub-navigation appears on entry pages"
+#: includes/class-admin.php:1328
+msgid "Write the definition in the page content"
 msgstr ""
 
-msgid "Frequently Asked Questions"
+#: includes/class-admin.php:1330
+msgid "Important:"
 msgstr ""
 
-msgid "How do I add more entries?"
+#: includes/class-admin.php:1331
+msgid "Set the \"Parent Page\" to your glossary page in the Page Attributes box"
 msgstr ""
 
-msgid "Simply create more child pages under your glossary page. They appear automatically."
+#: includes/class-admin.php:1333
+msgid "Publish the page"
 msgstr ""
 
-msgid "Can I change the order of entries?"
+#: includes/class-admin.php:1338
+msgid "Customization"
 msgstr ""
 
-msgid "Entries are sorted alphabetically by title. To change position, rename the page."
+#: includes/class-admin.php:1340
+msgid "Customize the appearance in the Design tab:"
 msgstr ""
 
-msgid "How does auto-linking work?"
+#: includes/class-admin.php:1344
+msgid "Navigation Style:"
 msgstr ""
 
-msgid "When enabled, glossary terms in your content automatically link to their entries."
+#: includes/class-admin.php:1345
+msgid "Choose between Buttons, Pills, or Minimal style."
 msgstr ""
 
-#. Frontend
+#: includes/class-admin.php:1348
+msgid "Color Scheme:"
+msgstr ""
+
+#: includes/class-admin.php:1349
+msgid "Select from 6 beautiful color schemes or auto-match your theme."
+msgstr ""
+
+#: includes/class-admin.php:1352
+msgid "Dark Mode:"
+msgstr ""
+
+#: includes/class-admin.php:1353
+msgid "Auto-detect system preference or force light/dark mode."
+msgstr ""
+
+#: includes/class-admin.php:1360
+msgid "Support & Resources"
+msgstr ""
+
+#: includes/class-admin.php:1365
+msgid "Support Forum"
+msgstr ""
+
+#: includes/class-admin.php:1369
+msgid "FAQ"
+msgstr ""
+
+#: includes/class-admin.php:1373
+msgid "Leave a Review"
+msgstr ""
+
+#: includes/class-admin.php:1379
+msgid "System Information"
+msgstr ""
+
+#: includes/class-admin.php:1383
+msgid "Plugin Version"
+msgstr ""
+
+#: includes/class-admin.php:1387
+msgid "WordPress Version"
+msgstr ""
+
+#: includes/class-admin.php:1391
+msgid "PHP Version"
+msgstr ""
+
+#: includes/class-admin.php:1400
+msgid "Need More Features?"
+msgstr ""
+
+#: includes/class-admin.php:1403
+msgid "3task Glossary Pro unlocks powerful features for professional glossaries:"
+msgstr ""
+
+#: includes/class-admin.php:1409
+msgid "Site-Wide Auto-Linking"
+msgstr ""
+
+#: includes/class-admin.php:1410
+msgid "Automatically link glossary terms in all your posts and pages."
+msgstr ""
+
+#: includes/class-admin.php:1417
+msgid "Show term definitions on hover without leaving the page."
+msgstr ""
+
+#: includes/class-admin.php:1424
+msgid "Let visitors search within your glossary instantly."
+msgstr ""
+
+#: includes/class-admin.php:1430
+msgid "Statistics & CSV"
+msgstr ""
+
+#: includes/class-admin.php:1431
+msgid "View analytics and import/export via CSV."
+msgstr ""
+
+#: includes/class-frontend.php:209
+msgid "No glossary entries yet. Create child pages under this page to add entries."
+msgstr ""
+
+#: includes/class-frontend.php:262
+msgid "Print Glossary"
+msgstr ""
+
+#: includes/class-frontend.php:342
+msgid "This term is mentioned in:"
+msgstr ""
+
+#: includes/class-frontend.php:346
+msgid "Post"
+msgstr ""
+
+#: includes/class-frontend.php:370
+msgid "Alphabetical navigation"
+msgstr ""
+
+#. translators: %s: Letter that has no glossary entries
+#: includes/class-frontend.php:402
+#, php-format
+msgid "%s, no entries"
+msgstr ""
+
+#: includes/class-frontend.php:437
 msgid "Back to Glossary"
 msgstr ""
 
-msgid "No entries yet"
+#: includes/class-frontend.php:532
+msgid "Glossary by"
 msgstr ""
 
-msgid "Start adding child pages to populate your glossary."
+#: includes/class-kb.php:62
+msgid "Thank you for your feedback!"
 msgstr ""
 
-msgid "Showing %1$d of %2$d entries."
+#: includes/class-kb.php:96
+msgid "Article not found."
 msgstr ""
 
-msgid "Upgrade for more"
+#: includes/class-kb.php:140
+msgid "A-Z glossary"
 msgstr ""
 
-msgid "Powered by"
+#: includes/class-kb.php:141
+msgid "Knowledge base"
 msgstr ""
 
-#. Validation
-msgid "Invalid nonce."
+#: includes/class-kb.php:142
+#: includes/class-kb.php:340
+msgid "Breadcrumbs"
 msgstr ""
 
-msgid "You do not have permission to do this."
+#: includes/class-kb.php:143
+msgid "Save"
 msgstr ""
 
-#. Notices
-msgid "Dismiss this notice."
+#. translators: 1: number of categories, 2: number of articles, 3: "helpful" votes, 4: "not helpful" votes.
+#: includes/class-kb.php:148
+#, php-format
+msgid "%1$d categories, %2$d articles. Rated helpful: %3$d, not helpful: %4$d."
+msgstr ""
+
+#: includes/class-kb.php:270
+msgid "Contents"
+msgstr ""
+
+#: includes/class-kb.php:281
+msgid "Related articles"
+msgstr ""
+
+#: includes/class-kb.php:287
+msgid "Was this article helpful?"
+msgstr ""
+
+#: includes/class-kb.php:288
+msgid "Yes"
+msgstr ""
+
+#: includes/class-kb.php:289
+msgid "No"
+msgstr ""
+
+#: includes/class-kb.php:442
+msgid "General"
+msgstr ""
+
+#: includes/class-kb.php:532
+#: includes/class-kb.php:533
+msgid "Search articles"
+msgstr ""
+
+#: includes/class-kb.php:534
+msgid "Search"
+msgstr ""
+
+#. translators: %s: search term.
+#: includes/class-kb.php:538
+#, php-format
+msgid "Results for \"%s\""
+msgstr ""
+
+#: includes/class-kb.php:546
+msgid "No articles found."
+msgstr ""
+
+#. translators: %d: number of articles in a knowledge base category.
+#: includes/class-kb.php:557
+#, php-format
+msgid "%d article"
+msgid_plural "%d articles"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-options.php:334
+msgid "Emerald"
+msgstr ""
+
+#: includes/class-options.php:335
+msgid "Slate"
+msgstr ""
+
+#: includes/class-options.php:350
+msgid "Buttons"
+msgstr ""
+
+#: includes/class-options.php:351
+msgid "Pills"
+msgstr ""
+
+#: includes/class-options.php:362
+msgid "Auto (System)"
+msgstr ""
+
+#: includes/class-options.php:363
+msgid "Light"
+msgstr ""
+
+#: includes/class-options.php:364
+msgid "Dark"
+msgstr ""
+
+#: includes/class-options.php:378
+msgid "Accessible (Recommended)"
+msgstr ""
+
+#: includes/class-options.php:379
+msgid "Screen readers announce \"X, no entries\""
+msgstr ""
+
+#: includes/class-options.php:382
+msgid "Hidden for Screen Readers"
+msgstr ""
+
+#: includes/class-options.php:383
+msgid "Visible but ignored by screen readers"
+msgstr ""
+
+#: includes/class-options.php:386
+msgid "Show (Visual Only)"
+msgstr ""
+
+#: includes/class-options.php:387
+msgid "May cause accessibility issues"
+msgstr ""
+
+#: includes/class-options.php:390
+msgid "Hide Completely"
+msgstr ""
+
+#: includes/class-options.php:391
+msgid "Only show letters with entries"
+msgstr ""
+
+#: includes/class-options.php:404
+msgid "Selective (Glossary pages only)"
+msgstr ""
+
+#: includes/class-options.php:405
+msgid "All pages (Pro only)"
+msgstr ""
+
+#: includes/class-options.php:416
+msgid "Auto (WordPress)"
+msgstr ""
+
+#: includes/class-widget.php:31
+msgid "Display A-Z glossary navigation in your sidebar."
+msgstr ""
+
+#: includes/class-widget.php:44
+#: includes/class-widget.php:201
+msgid "Glossary"
+msgstr ""
+
+#: includes/class-widget.php:120
+msgid "entry"
+msgid_plural "entries"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-widget.php:129
+msgid "View full glossary →"
+msgstr ""
+
+#: includes/class-widget.php:210
+msgid "Title:"
+msgstr ""
+
+#: includes/class-widget.php:219
+msgid "Glossary:"
+msgstr ""
+
+#: includes/class-widget.php:223
+msgid "— First active glossary —"
+msgstr ""
+
+#: includes/class-widget.php:241
+msgid "Display:"
+msgstr ""
+
+#: includes/class-widget.php:246
+msgid "A-Z Navigation"
+msgstr ""
+
+#: includes/class-widget.php:249
+msgid "Recent Terms"
+msgstr ""
+
+#: includes/class-widget.php:252
+msgid "Popular Terms"
 msgstr ""

@@ -60,6 +60,11 @@ class AZ_Glossary_Linker {
 
         // Clear cache when page is updated.
         add_action( 'save_post_page', array( $this, 'maybe_clear_cache' ), 10, 2 );
+        add_action( 'post_updated', array( $this, 'post_updated' ), 10, 3 );
+        add_action( 'deleted_post', array( $this, 'clear_all_caches' ) );
+        add_action( 'updated_post_meta', array( $this, 'meta_updated' ), 10, 4 );
+        add_action( 'added_post_meta', array( $this, 'meta_updated' ), 10, 4 );
+        add_action( 'deleted_post_meta', array( $this, 'meta_updated' ), 10, 4 );
     }
 
     /**
@@ -105,21 +110,7 @@ class AZ_Glossary_Linker {
         $link_class      = $this->options->get( 'link_class', 'glossary-term' );
         $link_class      = sanitize_html_class( $link_class );
 
-        // Process each entry.
-        foreach ( $entries as $entry ) {
-            // Don't link current post.
-            if ( $entry['id'] === $post->ID ) {
-                continue;
-            }
-
-            // Already linked? (if first_only is active).
-            if ( $link_first_only && in_array( $entry['title'], $this->linked_terms, true ) ) {
-                continue;
-            }
-
-            // Replace term in content.
-            $content = $this->replace_term( $content, $entry, $link_class, $link_first_only );
-        }
+        $content = AZGL_Content::link( $content, $entries, $link_class, $link_first_only, false, 0, $post->ID );
 
         return $content;
     }
@@ -131,6 +122,11 @@ class AZ_Glossary_Linker {
      * @return int|null Glossary ID or null.
      */
     private function get_glossary_for_post( $post_id ) {
+        // Knowledge bases are no link source (their entries are categories).
+        if ( AZGL_KB::root_of( $post_id ) ) {
+            return null;
+        }
+
         // Check if this is a glossary page.
         $glossary = $this->options->get_glossary( $post_id );
         if ( $glossary && ! empty( $glossary['active'] ) ) {
@@ -159,9 +155,10 @@ class AZ_Glossary_Linker {
      * @return array Entries with id, title, url.
      */
     private function get_linkable_entries( $glossary_id ) {
+        if ( ! AZGL_Content::public_page( $glossary_id ) ) { return array(); }
         // Check memory cache.
-        if ( isset( $this->entries_cache[ $glossary_id ] ) ) {
-            return $this->entries_cache[ $glossary_id ];
+        if ( $this->options->get( 'cache_enabled', true ) && isset( $this->entries_cache[ $glossary_id ] ) ) {
+            return array_values( array_filter( $this->entries_cache[ $glossary_id ], static function ( $entry ) { return AZGL_Content::public_page( $entry['id'] ); } ) );
         }
 
         // Check transient cache.
@@ -170,7 +167,7 @@ class AZ_Glossary_Linker {
 
         if ( false !== $cached && $this->options->get( 'cache_enabled', true ) ) {
             $this->entries_cache[ $glossary_id ] = $cached;
-            return $cached;
+            return array_values( array_filter( $cached, static function ( $entry ) { return AZGL_Content::public_page( $entry['id'] ); } ) );
         }
 
         // Get entries from main plugin.
@@ -224,34 +221,35 @@ class AZ_Glossary_Linker {
      * @return string Processed content.
      */
     private function replace_term( $content, $entry, $link_class, $first_only ) {
-        $term = preg_quote( $entry['title'], '~' );
+        return AZGL_Content::link( $content, array( $entry ), $link_class, $first_only );
+    }
 
-        // Build pattern that avoids replacing inside tags/links/headings.
-        // This pattern matches the term as a whole word, case-insensitive.
-        $pattern = '~'
-            . '(?<![<\w\-])'           // Not after < or word char or hyphen.
-            . '(?![^<]*>)'             // Not inside a tag.
-            . '\b(' . $term . ')\b'    // Whole word match.
-            . '(?![^<]*</a>)'          // Not before closing </a>.
-            . '(?![^<]*</h[1-6]>)'     // Not in headings.
-            . '~iu';                   // Case-insensitive, Unicode.
-
-        // Build replacement link.
-        $replacement = '<a href="' . esc_url( $entry['url'] ) . '" '
-                     . 'class="' . esc_attr( $link_class ) . '" '
-                     . 'title="' . esc_attr( $entry['title'] ) . '">'
-                     . '$1</a>';
-
-        // Replace (once or all).
-        $limit       = $first_only ? 1 : -1;
-        $new_content = preg_replace( $pattern, $replacement, $content, $limit, $count );
-
-        // Remember linked terms.
-        if ( $count > 0 ) {
-            $this->linked_terms[] = $entry['title'];
+    /**
+     * Clear caches of the old and new parent when a page moves or changes.
+     *
+     * @param int     $id     Post ID.
+     * @param WP_Post $after  Post after the update.
+     * @param WP_Post $before Post before the update.
+     */
+    public function post_updated( $id, $after, $before ) {
+        foreach ( array_unique( array( $id, $before->post_parent, $after->post_parent ) ) as $parent ) {
+            if ( $parent ) { $this->clear_cache( $parent ); }
         }
+    }
 
-        return null !== $new_content ? $new_content : $content;
+    /**
+     * Clear the parent cache when synonyms change.
+     *
+     * @param int    $meta_id Meta ID.
+     * @param int    $post_id Post ID.
+     * @param string $key     Meta key.
+     * @param mixed  $value   Meta value.
+     */
+    public function meta_updated( $meta_id, $post_id, $key, $value ) {
+        if ( in_array( $key, array( '_azgl_synonyms', '_azgp_synonyms' ), true ) ) {
+            $post = get_post( $post_id );
+            if ( $post && $post->post_parent ) { $this->clear_cache( $post->post_parent ); }
+        }
     }
 
     /**
@@ -288,6 +286,24 @@ class AZ_Glossary_Linker {
 
         // Also clear main glossary cache.
         azgl()->clear_glossary_cache( $glossary_id );
+    }
+
+    /**
+     * Determine whether the configured linker would link a source page to a target entry.
+     *
+     * @param WP_Post $source    Source page.
+     * @param int     $target_id Target entry ID.
+     * @return bool
+     */
+    public function links_to( $source, $target_id ) {
+        $mode = $this->options->get( 'linking_mode', 'selective' );
+        if ( 'disabled' === $mode || ! AZGL_Content::public_page( $source->ID ) ) { return false; }
+        if ( 'page' !== $source->post_type ) { return false; }
+        $ids = (array) $this->get_glossary_for_post( $source->ID );
+        $entries = array();
+        foreach ( $ids as $id ) { if ( $id ) { $entries = array_merge( $entries, $this->get_linkable_entries( $id ) ); } }
+        $html = AZGL_Content::link( $source->post_content, $entries, 'glossary-term', $this->options->get( 'link_first_only', true ), false, 0, $source->ID );
+        return false !== strpos( $html, 'data-azgl-entry="' . absint( $target_id ) . '"' );
     }
 
     /**
